@@ -40,7 +40,6 @@ class PagesController extends AppController
      */
     public function display(...$path)
     {
-        //status
         $count = count($path);
         if (!$count) {
             return $this->redirect('/');

@@ -41,12 +41,15 @@
     </table>
     <?php $countswimmers = sizeof($event->swimmer);
           $getheatno = $countswimmers / 8;
+        //   echo $getheatno."<br>"; 
           $checkremainder = $getheatno - round($getheatno);
-            if($checkremainder < 0){
+        //   echo $checkremainder."<br>";
+            if($checkremainder <= 0){
                 $heatno = round($getheatno);
             }else{
                 $heatno = round($getheatno) +1;
             }
+            // echo $heatno;
             $holdheat = $heatno;
           $swimlane = [
               '0' =>'4',
@@ -91,7 +94,9 @@
                     
                     $holdheat--;
                     $i=0;
-                    echo "
+
+                    if($holdheat!=0){
+                        echo "
                     <table cellpadding='0' cellspacing='0'>
                         <tr>
                             <th scope='col'>Swim Lane</th>
@@ -102,6 +107,7 @@
                         </tr>
                         <h5>Heat: $holdheat/$heatno</h5>";
                 }
+            }
             ?>
             
             <?php endforeach; ?>

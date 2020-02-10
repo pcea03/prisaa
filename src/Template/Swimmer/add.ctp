@@ -18,7 +18,9 @@
         <legend><?= __('Add Swimmer') ?></legend>
         <?php
             echo $this->Form->control('event_id', ['options' => $events]);
-            echo $this->Form->control('name');
+            echo $this->Form->control('name', [
+                'label' => 'Name/Names separated by Comma(for Relay)'
+                ]);
             echo $this->Form->control('team');
             echo $this->Form->control('seedtime');
         ?>

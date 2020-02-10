@@ -71,7 +71,7 @@
             <tr>
 
                 <th scope="col"><?= __('Swim Lane') ?></th>
-                <th scope="col"><?= __('Name') ?></th>
+                <th scope="col"><?= __('Name/s') ?></th>
                 <th scope="col"><?= __('Team') ?></th>
                 <th scope="col"><?= __('Seedtime') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
@@ -100,7 +100,7 @@
                     <table cellpadding='0' cellspacing='0'>
                         <tr>
                             <th scope='col'>Swim Lane</th>
-                            <th scope='col'>Name</th>
+                            <th scope='col'>Name/s</th>
                             <th scope='col'>Team</th>
                             <th scope='col'>Seedtime</th>
                             <th scope='col' class='actions'>Actions</th>

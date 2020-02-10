@@ -29,7 +29,7 @@
             <?php foreach ($swimmer as $swimmer): ?>
             <tr>
                 <td><?= $this->Number->format($swimmer->id) ?></td>
-                <td><?= $swimmer->has('event') ? $this->Html->link($swimmer->event->category, ['controller' => 'Events', 'action' => 'view', $swimmer->event->id]) : '' ?></td>
+                <td><?= $swimmer->has('event') ? $this->Html->link($swimmer->event->id, ['controller' => 'Events', 'action' => 'view', $swimmer->event->id]) : '' ?></td>
                 <td><?= h($swimmer->name) ?></td>
                 <td><?= h($swimmer->team) ?></td>
                 <td><?= h($swimmer->seedtime) ?></td>

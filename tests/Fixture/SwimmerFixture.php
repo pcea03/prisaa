@@ -48,7 +48,7 @@ class SwimmerFixture extends TestFixture
                 'event_id' => 1,
                 'name' => 'Lorem ipsum dolor sit amet',
                 'team' => 'Lorem ipsum dolor sit amet',
-                'seedtime' => '15:46:43',
+                'seedtime' => '04:44:51',
             ],
         ];
         parent::init();

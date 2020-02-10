@@ -23,6 +23,7 @@ class SwimmerController extends AppController
             'contain' => ['Events'],
         ];
         $swimmer = $this->paginate($this->Swimmer);
+
         $this->set(compact('swimmer'));
     }
 
@@ -51,9 +52,7 @@ class SwimmerController extends AppController
     {
         $swimmer = $this->Swimmer->newEntity();
         if ($this->request->is('post')) {
-            
             $swimmer = $this->Swimmer->patchEntity($swimmer, $this->request->getData());
-            // pr($swimmer);exit;
             if ($this->Swimmer->save($swimmer)) {
                 $this->Flash->success(__('The swimmer has been saved.'));
 
@@ -61,8 +60,7 @@ class SwimmerController extends AppController
             }
             $this->Flash->error(__('The swimmer could not be saved. Please, try again.'));
         }
-        $events = $this->Swimmer->Events->find('all', ['limit' => 200]);
-
+        $events = $this->Swimmer->Events->find('list', ['limit' => 200]);
         $this->set(compact('swimmer', 'events'));
     }
 

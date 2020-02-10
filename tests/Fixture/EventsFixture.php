@@ -45,8 +45,8 @@ class EventsFixture extends TestFixture
                 'age' => 'Lorem ipsum dolor sit amet',
                 'category' => 'Lorem ipsum dolor sit amet',
                 'level' => 'Lorem ipsum dolor sit amet',
-                'created' => '2020-02-06 15:47:00',
-                'modified' => '2020-02-06 15:47:00',
+                'created' => '2020-02-10 04:44:34',
+                'modified' => '2020-02-10 04:44:34',
             ],
         ];
         parent::init();

@@ -17,11 +17,13 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('Event No') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('divison') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('age') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('category') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('level') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('created') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -33,6 +35,8 @@
                 <td><?= h($event->age) ?></td>
                 <td><?= h($event->category) ?></td>
                 <td><?= h($event->level) ?></td>
+                <td><?= h($event->created) ?></td>
+                <td><?= h($event->modified) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $event->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $event->id]) ?>

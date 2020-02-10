@@ -17,8 +17,7 @@
     <fieldset>
         <legend><?= __('Add Swimmer') ?></legend>
         <?php
-
-            echo $this->Form->control('category', ['options' => $events]);
+            echo $this->Form->control('event_id', ['options' => $events]);
             echo $this->Form->control('name');
             echo $this->Form->control('team');
             echo $this->Form->control('seedtime');

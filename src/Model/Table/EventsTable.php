@@ -35,13 +35,14 @@ class EventsTable extends Table
         parent::initialize($config);
 
         $this->setTable('events');
-        $this->setDisplayField('id');
+        $this->setDisplayField('category');
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
 
         $this->hasMany('Swimmer', [
             'foreignKey' => 'event_id',
+            'sort' => 'Swimmer.seedtime ASC',
         ]);
     }
 

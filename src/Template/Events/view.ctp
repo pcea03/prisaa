@@ -38,22 +38,36 @@
             <th scope="row"><?= __('Id') ?></th>
             <td><?= $this->Number->format($event->id) ?></td>
         </tr>
-        <tr>
-            <th scope="row"><?= __('Created') ?></th>
-            <td><?= h($event->created) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Modified') ?></th>
-            <td><?= h($event->modified) ?></td>
-        </tr>
     </table>
+    <?php $countswimmers = sizeof($event->swimmer);
+          $getheatno = $countswimmers / 8;
+          $checkremainder = $getheatno - round($getheatno);
+            if($checkremainder < 0){
+                $heatno = round($getheatno);
+            }else{
+                $heatno = round($getheatno) +1;
+            }
+            $holdheat = $heatno;
+          $swimlane = [
+              '0' =>'4',
+              '1' =>'5',
+              '2' => '3',
+              '3' => '6',
+              '4' => '2',
+              '5' => '7',
+              '6' => '1',
+              '7' => '8'
+          ];
+          $i=0;
+    ?>
     <div class="related">
-        <h4><?= __('Related Swimmer') ?></h4>
+        <h4><?= __('Swimmer') ?></h4>
+        <h5><?php echo "Heat: ".$heatno."/".$heatno;?></h5>
         <?php if (!empty($event->swimmer)): ?>
         <table cellpadding="0" cellspacing="0">
             <tr>
-                <th scope="col"><?= __('Id') ?></th>
-                <th scope="col"><?= __('Event Id') ?></th>
+
+                <th scope="col"><?= __('Swim Lane') ?></th>
                 <th scope="col"><?= __('Name') ?></th>
                 <th scope="col"><?= __('Team') ?></th>
                 <th scope="col"><?= __('Seedtime') ?></th>
@@ -61,17 +75,35 @@
             </tr>
             <?php foreach ($event->swimmer as $swimmer): ?>
             <tr>
-                <td><?= h($swimmer->id) ?></td>
-                <td><?= h($swimmer->event_id) ?></td>
+                <td><?php echo $swimlane[$i];?></td>
                 <td><?= h($swimmer->name) ?></td>
                 <td><?= h($swimmer->team) ?></td>
-                <td><?= h($swimmer->seedtime) ?></td>
+                <td><?= date("H:i", strtotime($swimmer->seedtime)); ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['controller' => 'Swimmer', 'action' => 'view', $swimmer->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['controller' => 'Swimmer', 'action' => 'edit', $swimmer->id]) ?>
                     <?= $this->Form->postLink(__('Delete'), ['controller' => 'Swimmer', 'action' => 'delete', $swimmer->id], ['confirm' => __('Are you sure you want to delete # {0}?', $swimmer->id)]) ?>
                 </td>
             </tr>
+            <?php
+                $i++;
+                if($i == 8){
+                    
+                    $holdheat--;
+                    $i=0;
+                    echo "
+                    <table cellpadding='0' cellspacing='0'>
+                        <tr>
+                            <th scope='col'>Swim Lane</th>
+                            <th scope='col'>Name</th>
+                            <th scope='col'>Team</th>
+                            <th scope='col'>Seedtime</th>
+                            <th scope='col' class='actions'>Actions</th>
+                        </tr>
+                        <h5>Heat: $holdheat/$heatno</h5>";
+                }
+            ?>
+            
             <?php endforeach; ?>
         </table>
         <?php endif; ?>

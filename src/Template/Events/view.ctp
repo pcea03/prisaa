@@ -81,7 +81,7 @@
                 <td><?php echo $swimlane[$i];?></td>
                 <td><?= h($swimmer->name) ?></td>
                 <td><?= h($swimmer->team) ?></td>
-                <td><?= date("H:i", strtotime($swimmer->seedtime)); ?></td>
+                <td><?= date("H:i:s", strtotime($swimmer->seedtime)); ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['controller' => 'Swimmer', 'action' => 'view', $swimmer->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['controller' => 'Swimmer', 'action' => 'edit', $swimmer->id]) ?>

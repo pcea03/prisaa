@@ -37,6 +37,45 @@ class EventsController extends AppController
             'contain' => ['Swimmer'],
         ]);
 
+        // pr($event);
+
+        $swimlist = [];
+        $swimData = [];
+        $swimData2 = [];
+        $i = 0;
+        foreach($event->swimmer as $swimmer):
+
+            $seedtime = (date("H:i:s", strtotime($swimmer['seedtime'])));
+            if($seedtime != '00:00:00'){
+                array_push($swimData,
+                $swimmer['id'],
+                $swimmer['name'],
+                $swimmer['team'],
+                $seedtime
+                );
+                $swimData2[]=$swimData;
+            }
+                        $i++;
+            $swimData = [];
+        endforeach;
+
+        foreach($event->swimmer as $swimmer):
+            $seedtime = (date("H:i:s", strtotime($swimmer['seedtime'])));
+            if($seedtime == '00:00:00'){
+                array_push($swimData,
+                $swimmer['id'],
+                $swimmer['name'],
+                $swimmer['team'],
+                $seedtime
+                );
+                $swimData2[]=$swimData;
+            }
+                        $i++;
+            $swimData = [];
+        endforeach;
+
+
+        pr($swimData2);
         $this->set('event', $event);
     }
 
